@@ -2,19 +2,28 @@ import React, { useState } from "react";
 
 const ToDoList = () => {
 
-        const [toDo,setToDo] = useState('What needs to be done?')
-        function cambioInput(e) {
+//Esta función agrega el valor nuevo
+        const [toDo,setToDo] = useState('¿Qué falta hacer?')
+        const [toDoArray,setToDoArray] = useState(['Lavar los platos', 'Cocinar'])
+        function addDuty(e) {
             setToDo (e.target.value)
-            console.log(toDo)
+        }
+//Esta función activa el enter
+        function submit(e) {
+            console.log('submit')
+            setToDoArray ([...toDoArray,toDo])
+            e.preventDefault();
         }
 
 	return (
         <>
             <div className='container'>
-                <h1 className="text-light fw-light text-center">todos</h1>
-                <form className="w-50 m-auto">
-                        <input type="text" onChange={cambioInput} value={toDo} aria-label=".form-control-lg example"/>
-                        <p>items</p>
+                <h1 className="text-light fw-light text-center">to do's</h1>
+                <form onSubmit={submit} className="w-50 m-auto">
+                        <input type="text" onChange={addDuty} value={toDo} aria-label=".form-control-lg example"/>
+                        <ul>
+                            {toDoArray.map((item, id) => <li>{item}</li>)}
+                        </ul>
                 </form>
             </div>
         </>

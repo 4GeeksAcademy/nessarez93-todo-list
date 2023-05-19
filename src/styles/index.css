@@ -13,4 +13,6 @@ input, ul {
     height: 50px;
     font-size: 1.3rem;
     border: solid 1px #B4B4B4;
+    list-style: none;
 }
+
